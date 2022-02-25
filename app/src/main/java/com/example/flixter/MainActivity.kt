@@ -31,6 +31,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        val orientation = resources.configuration.orientation
+//        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+//            setContentView(R.layout.activity_main)
+//            // ...
+//        } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            setContentView(R.layout.activity_main)
+//            // ...
+//        }
         setContentView(R.layout.activity_main)
         rvMovies = findViewById(R.id.rvMovies)
 

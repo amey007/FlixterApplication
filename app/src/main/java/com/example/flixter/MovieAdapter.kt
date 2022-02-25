@@ -42,7 +42,8 @@ class MovieAdapter(private val context: Context, private val moviesList: Mutable
             tvTitle.text = movieItem.title
             tvOverview.text =movieItem.overview
             // Use glide with context to load image into layout
-            Glide.with(context).load(movieItem.posterImageUrl).into(ivPoster)
+            Glide.with(context).load(movieItem.posterImageUrl).placeholder(R.drawable.placeholder).error(R.drawable.img).fitCenter().into(ivPoster)
+
         }
     }
 }
