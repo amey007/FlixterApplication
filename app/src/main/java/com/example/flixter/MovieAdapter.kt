@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 private const val TAG = "MovieAdapter"
 const val MOVIE_EXTRA = "MOVIE_EXTRA"
@@ -51,10 +52,19 @@ class MovieAdapter(private val context: Context, private val moviesList: Mutable
         fun bind(movieItem: Movie) {
             tvTitle.text = movieItem.title
             tvOverview.text =movieItem.overview
+
+            val radius = 25; // corner radius, higher value = more rounded
+            val margin = 5; // crop margin, set to 0 for corners with no crop
+
             // Use glide with context to load image into layout
-            Glide.with(context).load(movieItem.posterImageUrl).placeholder(R.drawable.placeholder).error(R.drawable.img).fitCenter().into(ivPoster)
+            Glide.with(context).load(movieItem.posterImageUrl)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.img).fitCenter()
+                .transform(RoundedCornersTransformation(radius, margin))
+                .into(ivPoster)
 
         }
+//        .centerCrop() // scale image to fill the entire ImageView
         override fun onClick(v: View?) {
             // 1. Get notified of a particular movie which is clicked
             val movie = moviesList[adapterPosition]
